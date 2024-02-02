@@ -9,4 +9,4 @@
 
 import router from '@adonisjs/core/services/router'
 
-router.on('/').render('pages/dashboard')
+router.on('/').render('pages/layouts/dashboard')
