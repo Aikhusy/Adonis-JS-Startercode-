@@ -61,6 +61,7 @@
     "better-sqlite3": "^9.3.0",
     "edge.js": "^6.0.1",
     "luxon": "^3.4.4",
+    "mysql2": "^3.9.1",
     "reflect-metadata": "^0.2.1"
   },
   "eslintConfig": {
