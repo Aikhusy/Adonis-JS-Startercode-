@@ -7,7 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').notNullable()
 
-      table.boolean('isDeteleted').notNullable()
+      table.boolean('is_deleted').notNullable()
       table.string('nama_siswa').notNullable()
       table.string('NIS').unique().notNullable()
       table.string('NISN').unique().notNullable()
