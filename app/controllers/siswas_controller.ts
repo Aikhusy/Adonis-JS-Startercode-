@@ -1,6 +1,7 @@
 import Siswa from '#models/siswa'
 import type { HttpContext } from '@adonisjs/core/http'
 
+
 export default class SiswasController {
   /**
    * Display a list of resource
@@ -28,7 +29,9 @@ export default class SiswasController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params }: HttpContext) {
+    
+  }
 
   /**
    * Edit individual record

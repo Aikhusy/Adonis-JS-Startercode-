@@ -1,13 +1,18 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-enum Status{
-  Active='Aktif',
-  Alumni='Alumni',
-  Inactive='Tidak Aktif'
+
+export enum Status {
+  Active = 'Aktif',
+  Alumni = 'Alumni',
+  Inactive = 'Tidak Aktif',
+  Aktif = "Aktif"
 }
 
 export default class Siswa extends BaseModel {
+
+  
+
   @column({ isPrimary: true })
   declare id: number
 
