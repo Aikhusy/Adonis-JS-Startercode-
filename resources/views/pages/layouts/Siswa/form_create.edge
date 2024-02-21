@@ -42,7 +42,7 @@
                       <h4>HTML5 Form Basic</h4>
                     </div>
 
-                    <form action="{{route()}}" method="POST">
+                    <form action="{{route('siswa.store')}}" method="POST">
                         {{ csrfField() }}
                         
                         <div class="card-body">
@@ -63,10 +63,10 @@
 
                             <div class="form-group">
                                 <label>Status</label>
-                                <select class="form-control">
-                                    <option>Aktif</option>
-                                    <option>Tidak Aktif</option>
-                                    <option>Alumni</option>
+                                <select class="form-control" name="status">
+                                    <option value="Aktif">Aktif</option>
+                                    <option value="Tidak Aktif">Tidak Aktif</option>
+                                    <option value="Alumni">Alumni</option>
                                 </select>
                             </div>    
                             
@@ -92,16 +92,7 @@
                                 @end
                             </div>
 
-                            <div class="form-group">
-                                <label for="NIS">NIS</label>
-                                <input id="NIS" type="NIS" class="form-control @error('NIS') is-invalid @enderror" name="NIS" tabindex="1">
-                
-                                @error('NIS')
-                                <div class="invalid-feedback">
-                                    <p>{{ $message }}</p>
-                                </div>
-                                @end
-                            </div>
+                            <input type="hidden" value="false" name="is_deleted">
                             <button type="submit" class="btn btn-primary ">
                                 Submit
                             </button> 

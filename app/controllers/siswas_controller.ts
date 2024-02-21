@@ -12,7 +12,7 @@ export default class SiswasController {
   async index({ view }: HttpContext) {
     const data = await Siswa.query().select('nama_siswa', 'status');
 
-    return view.render('pages/layouts/Siswa/table', { data });
+    return view.render('pages/layouts/Siswa/form_create', { data });
   }
 
   /**
@@ -27,9 +27,10 @@ export default class SiswasController {
    */
   async store({ request, response }: HttpContext) {
 
-    const data = request.all()
+    const data = request.except(['_csrf'])
+    console.log(data)
     const payload = await createSiswaValidator.validate(data)
-
+    console.log(payload)
     await Siswa.create(payload);
 
     return response.redirect().toRoute('siswa.index');
