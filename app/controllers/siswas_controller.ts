@@ -7,7 +7,9 @@ export default class SiswasController {
    * Display a list of resource
    */
   async index({}: HttpContext) {
-    return await Siswa.all()
+    const data=Siswa.query().select('nama_siswa','status')
+
+    return await data
   }
 
   /**
