@@ -10,7 +10,7 @@ export default class SiswasController {
    * Display a list of resource
    */
   async index({ view }: HttpContext) {
-    const data = await Siswa.query().select('nama_siswa', 'status');
+    const data = await Siswa.query().select('nama_siswa', 'status','NISN','NIS','id');
 
     return view.render('pages/layouts/Siswa/table', { data });
   }
@@ -27,7 +27,8 @@ export default class SiswasController {
    */
   async store({ request, response }: HttpContext) {
 
-    const data = request.all()
+    const data = request.except(['_csrf'])
+
     const payload = await createSiswaValidator.validate(data)
 
     await Siswa.create(payload);
@@ -48,8 +49,16 @@ export default class SiswasController {
    * Edit individual record
    */
   async edit({ params, view }: HttpContext) {
-    const data = await Siswa.find(params.id);
+    const siswa = await Siswa.findOrFail(params.id)
+    console.log(siswa)
 
+    const data = {
+      nama_siswa: siswa.nama_siswa,
+      status: siswa.status,
+      NISN: siswa.$extras.NISN,
+      NIS: siswa.$extras.NIS,
+      id: siswa.id,
+    }
 
     return view.render('pages/layouts/Siswa/form_edit',{ data })
   }
@@ -64,7 +73,9 @@ export default class SiswasController {
       return response.redirect().toRoute('siswa.index',{messages:"Tidak Boleh Kosong"});
     }
 
-    const data = request.only(['nama_siswa', 'status']);
+    const data = request.except(['_csrf']);
+
+    const payload = await updateSiswaValidator.validate(data)
     
     siswa.merge(data);
     await siswa.save();
