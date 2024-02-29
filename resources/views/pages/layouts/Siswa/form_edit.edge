@@ -42,62 +42,75 @@
                       <h4>HTML5 Form Basic</h4>
                     </div>
 
-                    <form action="{{route('siswa.update',[data.id])}}" method="POST">
-                        {{ csrfField() }}
-                        
-                        <div class="card-body">
-                            <div class="alert alert-info">
-                                <b>Note!</b> Not all browsers support HTML5 type input.
+                    <form action="'/siswa/1?_method=PUT'" method="POST" >
+                      {{ csrfField() }}
+                      {{data.id}}
+                      <div class="card-body">
+                    
+                        <div class="form-group">
+                          <label for="nama">NAMA SISWA</label>
+                          <input
+                            id="nama"
+                            type="text"
+                            class="form-control @error('nama_siswa') is-invalid @enderror"
+                            name="nama_siswa"
+                            value="{{ data.nama_siswa }}"
+                          >
+                    
+                          @error('nama_siswa')
+                            <div class="invalid-feedback">
+                              <p>{{ message }}</p>
                             </div>
-
-                            <div class="form-group">
-                                <label for="nama">NAMA SISWA</label>
-                                <input id="nama" type="text" class="form-control @error('email') is-invalid @end" name="nama_siswa" value="{{data.nama_siswa}}">
-                                
-                                @error('nama')
-                                <div class="invalid-feedback">
-                                    <p>{{ message }}</p>
-                                </div>
-                                @end
-                            </div>
-
-                            <div class="form-group">
-                                <label>Status</label>
-                                <select class="form-control" name="status">
-                                    <option value="Aktif" {{ data.status === 'Aktif' ? 'selected' : '' }}>Aktif</option>
-                                    <option value="Tidak Aktif" {{ data.status === 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
-                                    <option value="Alumni" {{ data.status === 'Alumni' ? 'selected' : '' }}>Alumni</option>
-                                </select>
-                            </div>
-                              
-                            
-                            <div class="form-group">
-                                <label for="NIS">NIS</label>
-                                <input id="NIS" type="NIS" class="form-control @error('NIS') is-invalid @end" name="NIS" tabindex="1" value="{{data.NIS}}">
-                
-                                @error('NIS')
-                                <div class="invalid-feedback">
-                                    <p>{{ message }}</p>
-                                </div>
-                                @end
-                            </div>
-
-                            <div class="form-group">
-                                <label for="NISN">NIS</label>
-                                <input id="NISN" type="NIS" class="form-control @error('NISN') is-invalid @end" name="NISN" tabindex="1" value="{{data.NISN}}">
-                
-                                @error('NISN')
-                                <div class="invalid-feedback">
-                                    <p>{{ message }}</p>
-                                </div>
-                                @end
-                            </div>
-
-                            <button type="submit" class="btn btn-primary ">
-                                Submit
-                            </button> 
+                          @enderror
                         </div>
-                        
+                    
+                        <div class="form-group">
+                          <label>Status</label>
+                          <select class="form-control" name="status">
+                            <option value="Aktif" {{ data.status === 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                            <option value="Tidak Aktif" {{ data.status === 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+                            <option value="Alumni" {{ data.status === 'Alumni' ? 'selected' : '' }}>Alumni</option>
+                          </select>
+                        </div>
+                    
+                        <div class="form-group">
+                          <label for="NIS">NIS</label>
+                          <input
+                            id="NIS"
+                            type="text"
+                            class="form-control @error('NIS') is-invalid @enderror"
+                            name="NIS"
+                            tabindex="1"
+                            value="{{ data.NIS }}"
+                          >
+                    
+                          @error('NIS')
+                            <div class="invalid-feedback">
+                              <p>{{ message }}</p>
+                            </div>
+                          @enderror
+                        </div>
+                    
+                        <div class="form-group">
+                          <label for="NISN">NISN</label>
+                          <input
+                            id="NISN"
+                            type="text"
+                            class="form-control @error('NISN') is-invalid @enderror"
+                            name="NISN"
+                            tabindex="1"
+                            value="{{ data.NISN }}"
+                          >
+                    
+                          @error('NISN')
+                            <div class="invalid-feedback">
+                              <p>{{ message }}</p>
+                            </div>
+                          @enderror
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
                     </form>
                      
                   </div>

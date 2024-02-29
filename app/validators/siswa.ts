@@ -34,6 +34,8 @@ export const createSiswaValidator = vine.compile(
   export const updateSiswaValidator = vine.compile(
     vine.object({
         
+        id:vine.number(),  
+
 
         nama_siswa: vine.string().trim().minLength(2),
     
