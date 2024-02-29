@@ -17,3 +17,5 @@ Startercode Untuk Adonis JS menggunakan template Stisla.
 (21 february 2024) Create Items Using validators blom valid. 
 
 (22 february 2024) fixed create and Update Items Using validators blom valid. 
+
+Discontinued (Can not found method for PUT)
