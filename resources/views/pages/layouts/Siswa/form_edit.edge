@@ -42,7 +42,7 @@
                       <h4>HTML5 Form Basic</h4>
                     </div>
 
-                    <form action="{{ route('siswa.update',[id = data.id]) }}" method="PUT">
+                    <form action="'/siswa/1?_method=PUT'" method="POST" >
                       {{ csrfField() }}
                       {{data.id}}
                       <div class="card-body">
